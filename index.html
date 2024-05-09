@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Watch</title>
+    <style>
+        body{
+            background-color: black;
+            text-align: center;
+        }
+        h1{
+            display: inline;
+            color: white;
+            
+        }
+      
+        
+      
+      button{
+        display: inline;
+        color: white;
+        background-color: blueviolet;
+        font-size: 1.3rem;
+        
+      }
+      .main{
+        width: 100vw;
+        height: 100vh;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 1.5rem;
+      }
+        
+    </style>
+</head>
+<body> <div class="main">
+    <h1>Stop Watch</h1>
+    <div class="heading">
+        <h1 id="mins">00</h1>
+        
+        <h1 id="sec">00</h1>
+
+        <h1 id="msec">00</h1>
+    </div>
+    <div class="buttons">
+    <button id="Start" onclick="Start()">Start</button>
+    <button id="Stop" onclick="stop()">Stop</button>
+    <button id="ReSet" onclick="Reset()">ReSet</button>
+    </div>
+</div>
+</body>
+<script>
+
+
+let mins=0;
+
+let sec= 0;
+let msec= 0;
+
+ let minsHeading=document.getElementById("mins");
+ let secHeading =document.getElementById("sec");
+ let msecHeading=document.getElementById("msec");
+
+ let interval;
+
+ function timer(){
+    msec++
+
+    msecHeading.innerHTML=msec
+
+    if(msec >= 100){
+        sec++
+        secHeading.innerHTML=sec;
+        msec=0;
+  }
+        else if(sec>=60){
+        mins++
+        minsHeading.innerHTML=mins
+        sec=0;
+        }
+
+    
+ }
+ function Start(){
+    interval=setInterval(timer,10)
+
+ }
+ function stop() {
+    clearInterval(interval)
+ }function Reset(){
+    sec=0;
+    mins=0;
+    msec=0;
+
+    msecHeading.innerHTML=msec
+    minsHeading.innerHTML=mins
+    secHeading.innerHTML=sec
+
+    stop()
+ }
+
+
+ 
+</script>
+</html>
